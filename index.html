@@ -14,14 +14,42 @@
 <body>
 
     <div class="noise"></div>
+    <div class="scanlines"></div>
+
+    <!-- COMMAND PALETTE -->
+    <div id="command-palette" class="cmd-palette hidden">
+        <div class="cmd-backdrop"></div>
+        <div class="cmd-modal">
+            <div class="cmd-header">
+                <span class="cmd-prompt">&gt;_</span>
+                <input type="text" id="cmd-input" placeholder="Type a command..." autocomplete="off">
+                <kbd class="cmd-hint">ESC</kbd>
+            </div>
+            <div id="cmd-results" class="cmd-results">
+                <div class="cmd-item" data-action="projects"><span class="cmd-key">1</span> Go to Projects</div>
+                <div class="cmd-item" data-action="stores"><span class="cmd-key">2</span> Go to Shopify Stores</div>
+                <div class="cmd-item" data-action="links"><span class="cmd-key">3</span> Go to Links</div>
+                <div class="cmd-item" data-action="github"><span class="cmd-key">G</span> Open GitHub</div>
+                <div class="cmd-item" data-action="email"><span class="cmd-key">E</span> Send Email</div>
+                <div class="cmd-item" data-action="crt"><span class="cmd-key">C</span> Toggle CRT Effect</div>
+                <div class="cmd-item" data-action="monolith"><span class="cmd-key">M</span> Open Monolith</div>
+            </div>
+            <div class="cmd-footer">
+                <span><kbd>↑↓</kbd> Navigate</span>
+                <span><kbd>Enter</kbd> Select</span>
+                <span><kbd>Ctrl+K</kbd> Toggle</span>
+            </div>
+        </div>
+    </div>
+
     <div class="frame">
 
         <!-- MARQUEE BANNER -->
         <div class="marquee-wrap">
             <div class="marquee-content">
-                I BUILD THINGS THAT WORK // COMPUTER ENGINEERING @ INDIA // LOCAL-FIRST ENTHUSIAST // SHOPIFY DEVELOPER
+                I BUILD THINGS THAT WORK // COMPUTER ENGINEERING @ INDIA // SHOPIFY DEVELOPER
                 // CURRENTLY LOADING NEW SKILLS... // I BUILD THINGS THAT WORK // COMPUTER ENGINEERING @ INDIA //
-                LOCAL-FIRST ENTHUSIAST // SHOPIFY DEVELOPER // CURRENTLY LOADING NEW SKILLS...
+                SHOPIFY DEVELOPER // CURRENTLY LOADING NEW SKILLS...
             </div>
         </div>
 
@@ -43,7 +71,6 @@
             <a href="https://github.com/aryanxpatel" target="_blank" rel="noopener noreferrer me">GitHub</a>
             <a href="https://linkedin.com/in/aryanxpatel" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
             <a href="https://twitter.com/aryanxpatel" target="_blank" rel="noopener noreferrer me">Twitter/X</a>
-            <a href="https://brain.patelaryan.com" target="_blank" rel="noopener noreferrer">Second Brain</a>
         </nav>
 
         <!-- MAIN GRID LAYOUT -->
@@ -82,13 +109,14 @@
                 <!-- CURRENTLY BUILDING -->
                 <div class="widget">
                     <span class="widget-title">[>_] CURRENTLY BUILDING</span>
-                    <div class="building-card">
+                    <div id="building-card" class="building-card">
                         <div class="building-status">
                             <span class="status-dot"></span>
-                            <span class="status-text">IN PROGRESS</span>
+                            <span id="commit-status" class="status-text">FETCHING...</span>
                         </div>
-                        <h4 class="building-name">Local-First Apps</h4>
-                        <p class="building-desc">Exploring offline-capable, user-owned software patterns.</p>
+                        <h4 id="commit-repo" class="building-name">Loading...</h4>
+                        <p id="commit-message" class="building-desc">Fetching latest commit...</p>
+                        <span id="commit-time" class="commit-time"></span>
                     </div>
                 </div>
 
@@ -145,16 +173,18 @@
                         </div>
                     </a>
 
-                    <a href="https://brain.patelaryan.com" target="_blank" class="project-card">
+                    <a href="https://oma.patelaryan.com/" target="_blank" class="project-card">
                         <div class="card-header">
-                            <span>BRAIN.PATELARYAN.COM</span>
+                            <span>OMA.PATELARYAN.COM</span>
                             <span class="card-status live">[LIVE]</span>
                         </div>
                         <div class="card-body">
-                            <p class="project-desc">Digital garden & second brain. A public knowledge base of everything
-                                I learn and explore.</p>
+                            <p class="project-desc">Complete order management solution for sales teams. Manage
+                                customers, products, and orders with React Native, Expo, and Google Sheets integration.
+                            </p>
                         </div>
                     </a>
+
                 </section>
 
                 <!-- SHOPIFY STORES SECTION -->
@@ -164,9 +194,9 @@
                         <span class="section-num">02</span>
                     </div>
 
-                    <a href="https://everythingworldwide.store" target="_blank" class="project-card">
+                    <a href="https://everythingworldwide.vercel.app/" target="_blank" class="project-card">
                         <div class="card-header">
-                            <span>EVERYTHINGWORLDWIDE.STORE</span>
+                            <span>EVERYTHINGWORLDWIDE.VERCEL.APP</span>
                             <span class="card-status live">[LIVE]</span>
                         </div>
                         <div class="card-body">
@@ -186,9 +216,9 @@
                         </div>
                     </a>
 
-                    <a href="https://chettinadsnacks.store" target="_blank" class="project-card">
+                    <a href="https://chettinad-snacks.vercel.app/" target="_blank" class="project-card">
                         <div class="card-header">
-                            <span>CHETTINADSNACKS.STORE</span>
+                            <span>CHETTINAD-SNACKS.VERCEL.APP</span>
                             <span class="card-status live">[LIVE]</span>
                         </div>
                         <div class="card-body">
@@ -197,9 +227,9 @@
                         </div>
                     </a>
 
-                    <a href="https://speedcubehub.store" target="_blank" class="project-card">
+                    <a href="https://speedcubehub.vercel.app/en" target="_blank" class="project-card">
                         <div class="card-header">
-                            <span>SPEEDCUBEHUB.STORE</span>
+                            <span>SPEEDCUBEHUB.VERCEL.APP</span>
                             <span class="card-status live">[LIVE]</span>
                         </div>
                         <div class="card-body">
