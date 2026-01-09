@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATELARYAN.COM</title>
+    <meta name="description"
+        content="Aryan Patel - Computer Engineering Student, Builder & Learner. Building local-first software and Shopify stores.">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts/main.js" defer></script>
+</head>
+
+<body>
+
+    <div class="noise"></div>
+    <div class="frame">
+
+        <!-- MARQUEE BANNER -->
+        <div class="marquee-wrap">
+            <div class="marquee-content">
+                I BUILD THINGS THAT WORK // COMPUTER ENGINEERING @ INDIA // LOCAL-FIRST ENTHUSIAST // SHOPIFY DEVELOPER
+                // CURRENTLY LOADING NEW SKILLS... // I BUILD THINGS THAT WORK // COMPUTER ENGINEERING @ INDIA //
+                LOCAL-FIRST ENTHUSIAST // SHOPIFY DEVELOPER // CURRENTLY LOADING NEW SKILLS...
+            </div>
+        </div>
+
+        <!-- HEADER WITH MASSIVE ASCII TITLE -->
+        <header class="reveal-on-scroll">
+            <pre id="ascii-title" class="ascii-title" data-text="PATELARYAN">
+██████╗  █████╗ ████████╗███████╗██╗      █████╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗
+██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║     ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║
+██████╔╝███████║   ██║   █████╗  ██║     ███████║██████╔╝ ╚████╔╝ ███████║██╔██╗ ██║
+██╔═══╝ ██╔══██║   ██║   ██╔══╝  ██║     ██╔══██║██╔══██╗  ╚██╔╝  ██╔══██║██║╚██╗██║
+██║     ██║  ██║   ██║   ███████╗███████╗██║  ██║██║  ██║   ██║   ██║  ██║██║ ╚████║
+╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝<span class="domain-suffix">.COM</span>
+            </pre>
+        </header>
+
+        <!-- NAVIGATION -->
+        <nav aria-label="Social and identity links" class="reveal-on-scroll">
+            <a href="mailto:offaryanpatel@gmail.com" rel="me">E-Mail</a>
+            <a href="https://github.com/aryanxpatel" target="_blank" rel="noopener noreferrer me">GitHub</a>
+            <a href="https://linkedin.com/in/aryanxpatel" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+            <a href="https://twitter.com/aryanxpatel" target="_blank" rel="noopener noreferrer me">Twitter/X</a>
+            <a href="https://brain.patelaryan.com" target="_blank" rel="noopener noreferrer">Second Brain</a>
+        </nav>
+
+        <!-- MAIN GRID LAYOUT -->
+        <div class="grid-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="reveal-on-scroll">
+
+                <!-- CURRENTLY READING -->
+                <div class="widget">
+                    <span class="widget-title">[>_] CURRENTLY READING</span>
+                    <div class="reading-card">
+                        <p class="reading-quote">"Any fool can write code that a computer can understand. Good
+                            programmers write code that humans can understand."</p>
+                        <p class="reading-source">— Clean Code by Robert C. Martin</p>
+                    </div>
+                </div>
+
+                <!-- NOW PLAYING -->
+                <div class="widget">
+                    <span class="widget-title">[>_] NOW PLAYING</span>
+                    <div id="now-playing" class="player-card">
+                        <div class="player-art-container">
+                            <img id="np-art" class="player-art"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23111' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='%23333' font-size='12'%3E~%3C/text%3E%3C/svg%3E"
+                                alt="Album Art">
+                        </div>
+                        <div class="player-info">
+                            <span id="np-track" class="player-track">Loading...</span>
+                            <span id="np-artist" class="player-artist">—</span>
+                            <span id="np-time" class="player-time">Fetching...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CURRENTLY BUILDING -->
+                <div class="widget">
+                    <span class="widget-title">[>_] CURRENTLY BUILDING</span>
+                    <div class="building-card">
+                        <div class="building-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">IN PROGRESS</span>
+                        </div>
+                        <h4 class="building-name">Local-First Apps</h4>
+                        <p class="building-desc">Exploring offline-capable, user-owned software patterns.</p>
+                    </div>
+                </div>
+
+                <!-- AI TWIN -->
+                <div class="widget">
+                    <span class="widget-title">[>_] AI TWIN</span>
+                    <div class="ai-twin-container">
+                        <div id="chat-messages" class="chat-messages">
+                            <div class="chat-message bot">
+                                <span class="chat-text">Hey! I'm Aryan's AI twin. Ask me anything about his work,
+                                    projects, or skills.</span>
+                            </div>
+                        </div>
+                        <form id="chat-form" class="chat-form">
+                            <input type="text" id="chat-input" placeholder="Ask me anything..." maxlength="500" required
+                                autocomplete="off">
+                            <button type="submit" class="chat-btn">>></button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main>
+
+                <!-- PROJECTS SECTION -->
+                <section id="projects" class="section-block reveal-on-scroll">
+                    <div class="section-head">
+                        <h2>PROJECTS</h2>
+                        <span class="section-num">01</span>
+                    </div>
+
+                    <a href="https://monolith.patelaryan.com" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>MONOLITH.PATELARYAN.COM</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Local-first markdown sanctuary. 60x faster rendering with virtual
+                                scrolling. Your notes, your device, your rules.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://aithena.patelaryan.com" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>AITHENA.PATELARYAN.COM</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">AI-powered study copilot. Transform chaos into clarity with
+                                summaries, quizzes, and flashcards from any PDF or video.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://brain.patelaryan.com" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>BRAIN.PATELARYAN.COM</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Digital garden & second brain. A public knowledge base of everything
+                                I learn and explore.</p>
+                        </div>
+                    </a>
+                </section>
+
+                <!-- SHOPIFY STORES SECTION -->
+                <section id="stores" class="section-block reveal-on-scroll">
+                    <div class="section-head">
+                        <h2>SHOPIFY STORES</h2>
+                        <span class="section-num">02</span>
+                    </div>
+
+                    <a href="https://everythingworldwide.store" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>EVERYTHINGWORLDWIDE.STORE</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Global dropshipping store with multi-currency support, international
+                                shipping calculator, and optimized checkout flow.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://houseofkumaran.com" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>HOUSEOFKUMARAN.COM</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Traditional South Indian brand store. Custom theme with cultural
+                                aesthetics, product collections, and festive campaigns.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://chettinadsnacks.store" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>CHETTINADSNACKS.STORE</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Authentic Chettinad snacks e-commerce. Subscription boxes, bulk
+                                ordering, and regional delivery integration.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://speedcubehub.store" target="_blank" class="project-card">
+                        <div class="card-header">
+                            <span>SPEEDCUBEHUB.STORE</span>
+                            <span class="card-status live">[LIVE]</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="project-desc">Speed cubing equipment store. Product comparison, difficulty
+                                ratings, and cuber community features.</p>
+                        </div>
+                    </a>
+                </section>
+
+                <!-- LINKS SECTION -->
+                <section id="links" class="section-block reveal-on-scroll">
+                    <div class="section-head">
+                        <h2>LINKS</h2>
+                        <span class="section-num">03</span>
+                    </div>
+
+                    <ul class="resource-list">
+                        <li><a href="https://fmhy.net" target="_blank">FMHY</a> <span>(Free stuff, guides,
+                                resources)</span></li>
+                        <li><a href="https://monochrome.tf" target="_blank">Monochrome</a> <span>(Free music
+                                streaming)</span></li>
+                        <li><a href="https://archive.org" target="_blank">Internet Archive</a> <span>(Preserving the
+                                web)</span></li>
+                        <li><a href="https://localfirstweb.dev" target="_blank">Local-First Web</a> <span>(The future of
+                                apps)</span></li>
+                        <li><a href="https://inkandswitch.com" target="_blank">Ink & Switch</a> <span>(Research lab I
+                                follow)</span></li>
+                        <li><a href="https://roadmap.sh" target="_blank">Roadmap.sh</a> <span>(Learning paths)</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="reveal-on-scroll">
+            <div class="terminal-footer">
+                <span class="terminal-prompt">aryan@patelaryan</span><span class="terminal-colon">:</span><span
+                    class="terminal-path">~</span><span class="terminal-dollar">$</span>
+                <span class="terminal-command">echo "Thanks for visiting"</span>
+                <span class="terminal-cursor">▌</span>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
