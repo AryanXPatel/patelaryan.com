@@ -1155,6 +1155,8 @@ footer {
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE DESIGN
    ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Tablet landscape / small desktop (900px and below) */
 @media (max-width: 900px) {
     body {
         font-size: 12px;
@@ -1170,6 +1172,7 @@ footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        padding: 1.25rem;
     }
 
     .widget {
@@ -1181,7 +1184,7 @@ footer {
     }
 
     .ascii-title {
-        font-size: 0.4rem;
+        font-size: 0.35rem;
     }
 
     nav a {
@@ -1203,6 +1206,27 @@ footer {
     }
 }
 
+/* Tablet portrait (768px and below) */
+@media (max-width: 768px) {
+    aside {
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .section-block {
+        padding: 1.25rem 0.75rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .ascii-title {
+        font-size: 0.33rem;
+    }
+}
+
+/* Large phones (600px and below) */
 @media (max-width: 600px) {
     body {
         font-size: 11px;
@@ -1210,16 +1234,42 @@ footer {
 
     aside {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem 0.75rem;
+    }
+
+    header {
+        padding: 1.5rem 0.75rem;
     }
 
     .ascii-title {
-        font-size: 0.28rem;
+        font-size: 0.3rem;
+    }
+
+    /* Navigation: Convert to 2x2 grid for better tap targets */
+    nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     nav a {
-        padding: 0.5rem 0.25rem;
-        font-size: 0.6rem;
-        min-width: 50px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 0.5rem;
+        font-size: 0.7rem;
+        min-width: unset;
+    }
+
+    nav a:nth-child(odd) {
+        border-right: 1px solid var(--border);
+    }
+
+    nav a:nth-child(n+3) {
+        border-bottom: none;
+    }
+
+    nav a:last-child {
+        border-right: none;
     }
 
     .section-block {
@@ -1236,5 +1286,153 @@ footer {
 
     .terminal-footer {
         font-size: 0.7rem;
+    }
+
+    .project-card:hover {
+        transform: translateX(4px) scale(1.005);
+    }
+
+    .project-card:hover .card-header,
+    .project-card:hover .card-body {
+        padding-left: 1rem;
+    }
+}
+
+/* Standard phones (480px and below) */
+@media (max-width: 480px) {
+    .ascii-title {
+        font-size: 0.26rem;
+    }
+
+    header {
+        padding: 1.25rem 0.5rem;
+    }
+
+    .section-block {
+        padding: 0.75rem 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .card-header {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .card-body {
+        padding: 0.75rem;
+    }
+
+    .project-desc {
+        font-size: 0.8rem;
+    }
+
+    .terminal-footer {
+        font-size: 0.65rem;
+        padding: 0.75rem;
+    }
+
+    .widget-title {
+        font-size: 0.8rem;
+    }
+
+    .reading-quote {
+        font-size: 0.75rem;
+    }
+
+    .player-art {
+        width: 60px;
+        height: 60px;
+    }
+
+    .player-track {
+        font-size: 0.8rem;
+    }
+
+    .player-artist {
+        font-size: 0.7rem;
+    }
+}
+
+/* Small phones (375px and below) */
+@media (max-width: 375px) {
+    body {
+        font-size: 10px;
+    }
+
+    .ascii-title {
+        font-size: 0.22rem;
+    }
+
+    header {
+        padding: 1rem 0.25rem;
+    }
+
+    aside {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .widget-title {
+        font-size: 0.75rem;
+    }
+
+    .reading-quote {
+        font-size: 0.7rem;
+    }
+
+    .section-block {
+        padding: 0.5rem 0.25rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .card-header {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .card-body {
+        padding: 0.5rem;
+    }
+
+    .project-desc {
+        font-size: 0.75rem;
+    }
+
+    nav a {
+        padding: 0.6rem 0.4rem;
+        font-size: 0.65rem;
+    }
+
+    .terminal-footer {
+        font-size: 0.6rem;
+        padding: 0.5rem;
+    }
+
+    .player-art {
+        width: 50px;
+        height: 50px;
+    }
+
+    .chat-messages {
+        max-height: 120px;
+        font-size: 0.65rem;
+    }
+
+    .chat-text {
+        font-size: 0.65rem;
+    }
+
+    .chat-form input {
+        font-size: 0.65rem;
+        padding: 8px;
+    }
+
+    .chat-btn {
+        padding: 8px 12px;
     }
 }
