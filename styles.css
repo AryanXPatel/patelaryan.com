@@ -28,6 +28,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -45,6 +46,32 @@ body {
     background: var(--accent);
     color: var(--bg);
     text-shadow: none;
+}
+
+/* Custom Scrollbar - Terminal Style */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-light) var(--bg);
 }
 
 a {
@@ -1230,16 +1257,57 @@ footer {
 @media (max-width: 600px) {
     body {
         font-size: 11px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     aside {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 1rem 0.75rem;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .widget {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .reading-card, .player-card, .building-card, .ai-twin-container {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .reading-source {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
     }
 
     header {
         padding: 1.5rem 0.75rem;
+        overflow-x: hidden;
+    }
+
+    .frame {
+        border-left: none;
+        border-right: none;
+        max-width: 100%;
+    }
+
+    main {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .project-card {
+        max-width: 100%;
+    }
+
+    .project-desc {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .ascii-title {
@@ -1273,11 +1341,18 @@ footer {
     }
 
     .section-block {
-        padding: 1rem 0.75rem;
+        padding: 1rem;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     h2 {
         font-size: 1.2rem;
+    }
+
+    .card-header, .card-body {
+        box-sizing: border-box;
+        width: 100%;
     }
 
     .stores-grid {
@@ -1301,15 +1376,24 @@ footer {
 /* Standard phones (480px and below) */
 @media (max-width: 480px) {
     .ascii-title {
-        font-size: 0.26rem;
+        font-size: 0.22rem;
+        transform: scale(0.85);
+        transform-origin: center;
     }
 
     header {
         padding: 1.25rem 0.5rem;
+        overflow: hidden;
     }
 
     .section-block {
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    main, .project-card, .card-header, .card-body {
+        box-sizing: border-box;
+        max-width: 100%;
     }
 
     h2 {
@@ -1363,11 +1447,14 @@ footer {
     }
 
     .ascii-title {
-        font-size: 0.22rem;
+        font-size: 0.18rem;
+        transform: scale(0.7);
+        transform-origin: center;
     }
 
     header {
-        padding: 1rem 0.25rem;
+        padding: 1rem 0.5rem;
+        overflow: hidden;
     }
 
     aside {
@@ -1383,7 +1470,7 @@ footer {
     }
 
     .section-block {
-        padding: 0.5rem 0.25rem;
+        padding: 0.75rem 0.5rem;
     }
 
     h2 {
