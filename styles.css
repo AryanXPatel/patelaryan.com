@@ -10,6 +10,13 @@
     cursor: crosshair;
 }
 
+/* Enable smooth touch scrolling on mobile */
+@media (pointer: coarse) {
+    * {
+        cursor: auto;
+    }
+}
+
 :root {
     --bg: #000000;
     --fg: #e0e0e0;
@@ -29,6 +36,15 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Enable smooth touch scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Disable smooth scroll on touch devices for better native scrolling */
+@media (pointer: coarse) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 body {
@@ -99,6 +115,8 @@ a:hover {
     z-index: 9999;
     opacity: 0.04;
     background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    /* Ensure touch events pass through */
+    touch-action: none;
 }
 
 /* CRT Scanline Effect */
@@ -116,6 +134,17 @@ a:hover {
             transparent 1px,
             transparent 2px);
     opacity: 0.3;
+    /* Ensure touch events pass through */
+    touch-action: none;
+}
+
+/* Hide visual effects on mobile for better performance and scrolling */
+@media (pointer: coarse) {
+
+    .noise,
+    .scanlines {
+        display: none;
+    }
 }
 
 /* Screen Flicker (subtle) */
@@ -1274,7 +1303,10 @@ footer {
         overflow: hidden;
     }
 
-    .reading-card, .player-card, .building-card, .ai-twin-container {
+    .reading-card,
+    .player-card,
+    .building-card,
+    .ai-twin-container {
         max-width: 100%;
         box-sizing: border-box;
     }
@@ -1350,7 +1382,8 @@ footer {
         font-size: 1.2rem;
     }
 
-    .card-header, .card-body {
+    .card-header,
+    .card-body {
         box-sizing: border-box;
         width: 100%;
     }
@@ -1363,8 +1396,14 @@ footer {
         font-size: 0.7rem;
     }
 
+    /* Disable transform on mobile - causes scroll issues */
     .project-card:hover {
-        transform: translateX(4px) scale(1.005);
+        transform: none;
+    }
+
+    .project-card:active {
+        background: #0a0a0a;
+        border-color: var(--accent);
     }
 
     .project-card:hover .card-header,
@@ -1391,7 +1430,10 @@ footer {
         box-sizing: border-box;
     }
 
-    main, .project-card, .card-header, .card-body {
+    main,
+    .project-card,
+    .card-header,
+    .card-body {
         box-sizing: border-box;
         max-width: 100%;
     }
@@ -1521,5 +1563,84 @@ footer {
 
     .chat-btn {
         padding: 8px 12px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE TOUCH SCROLLING OPTIMIZATION
+   Fixes scroll getting "stuck" on touch devices
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (pointer: coarse),
+(hover: none) {
+
+    /* Enable smooth momentum scrolling */
+    html,
+    body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: none;
+        touch-action: pan-y pinch-zoom;
+    }
+
+    /* Ensure main scrollable areas work properly */
+    .frame {
+        touch-action: pan-y;
+        overflow-y: auto;
+    }
+
+    /* Remove all transforms that can capture scroll events */
+    .project-card,
+    .store-card,
+    nav a,
+    ul.resource-list li {
+        transform: none !important;
+        will-change: auto;
+    }
+
+    /* Disable pseudo-element animations that cause repaints */
+    .project-card::before,
+    .project-card::after,
+    nav a::before {
+        display: none;
+    }
+
+    /* Simpler active states for touch feedback */
+    .project-card:active {
+        background: rgba(255, 68, 68, 0.1);
+        border-color: var(--accent);
+    }
+
+    nav a:active {
+        background: var(--accent);
+        color: var(--bg);
+    }
+
+    ul.resource-list li:active {
+        color: var(--accent);
+    }
+
+    /* Disable flicker animation that can affect scrolling */
+    .frame {
+        animation: none !important;
+    }
+
+    /* Ensure chat doesn't interfere with page scroll */
+    .chat-messages {
+        touch-action: pan-y;
+        overscroll-behavior: contain;
+    }
+
+    /* Command palette backdrop fix */
+    .cmd-backdrop {
+        touch-action: none;
+    }
+
+    /* Widget cards - remove any scroll-blocking transforms */
+    .widget,
+    .reading-card,
+    .player-card,
+    .building-card,
+    .ai-twin-container {
+        transform: none;
+        will-change: auto;
     }
 }
