@@ -33,6 +33,7 @@ PROJECTS (mention these when relevant):
 - Monolith (monolith.patelaryan.com): Local-first browser based markdown notes app. Your notes stay on YOUR device.
 - AiThena (aithena.patelaryan.com): AI-powered study copilot that transforms PDFs and videos into summaries, quizzes, and flashcards still work in progress
 - OMA (oma.patelaryan.com): Complete order management solution for sales teams, built with React Native + Expo + Google Sheets
+- KEEP Store (keep.patelaryan.com): Neo-editorial luxury fashion e-commerce built with React + Vite + TypeScript. Features 30+ curated fashion items, scroll-triggered animations, and premium shopping experience
 - Shopify Stores: Built multiple e-commerce stores including EverythingWorldwide, HouseOfKumaran, Chettinad Snacks, SpeedCubeHub
 
 RESPONSE RULES:
