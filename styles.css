@@ -834,6 +834,21 @@ h2::before {
     text-shadow: 0 0 10px var(--success);
 }
 
+.card-status.client {
+    color: var(--glitch-color-1);
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.45);
+}
+
+.card-status.wip {
+    color: #ffb347;
+    text-shadow: 0 0 10px rgba(255, 179, 71, 0.45);
+}
+
+.card-status.concept {
+    color: #ff7a7a;
+    text-shadow: 0 0 10px rgba(255, 122, 122, 0.45);
+}
+
 .project-card:hover .card-status.live {
     animation: pulse 1.5s infinite;
 }
