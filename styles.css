@@ -225,6 +225,10 @@ a:hover {
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
 }
 
+main {
+    min-width: 0;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    MARQUEE BANNER
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -1219,16 +1223,23 @@ footer {
     }
 
     .grid-layout {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
     }
 
     aside {
+        order: 2;
         border-right: none;
-        border-bottom: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        border-bottom: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 1.25rem;
+    }
+
+    main {
+        order: 1;
     }
 
     .widget {
@@ -1577,23 +1588,61 @@ footer {
     html,
     body {
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior-y: none;
+        overscroll-behavior-y: auto;
         touch-action: pan-y pinch-zoom;
+        overflow-y: auto;
     }
 
-    /* Ensure main scrollable areas work properly */
+    body {
+        text-rendering: optimizeSpeed;
+    }
+
+    .marquee-wrap {
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 8px 0;
+    }
+
+    .marquee-content {
+        display: inline-block;
+        padding-left: 0;
+        white-space: nowrap;
+        text-align: left;
+        line-height: 1.2;
+        animation: marquee-mobile 28s linear infinite !important;
+    }
+
+    /* Keep a single page-level scroll container on touch devices */
     .frame {
-        touch-action: pan-y;
-        overflow-y: auto;
+        touch-action: auto;
+        overflow: visible;
     }
 
     /* Remove all transforms that can capture scroll events */
     .project-card,
     .store-card,
     nav a,
-    ul.resource-list li {
+    ul.resource-list li,
+    .section-block,
+    .widget,
+    .ai-twin-container,
+    .chat-form,
+    .chat-btn {
         transform: none !important;
         will-change: auto;
+    }
+
+    /* Prioritize vertical panning over accidental taps on large interactive blocks */
+    .project-card,
+    .store-card,
+    nav a,
+    .resource-list a,
+    .widget,
+    .ai-twin-container,
+    .chat-form,
+    .chat-btn,
+    footer a {
+        touch-action: pan-y;
     }
 
     /* Disable pseudo-element animations that cause repaints */
@@ -1601,6 +1650,33 @@ footer {
     .project-card::after,
     nav a::before {
         display: none;
+    }
+
+    /* Disable non-essential motion during touch scrolling */
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .status-dot,
+    .terminal-cursor,
+    h2::before {
+        animation: none !important;
+    }
+
+    .project-card,
+    .card-header,
+    .card-body,
+    nav a,
+    ul.resource-list li {
+        transition: none !important;
+    }
+
+    .project-card,
+    .store-card {
+        box-shadow: none !important;
+        filter: none !important;
     }
 
     /* Simpler active states for touch feedback */
@@ -1625,8 +1701,10 @@ footer {
 
     /* Ensure chat doesn't interfere with page scroll */
     .chat-messages {
-        touch-action: pan-y;
-        overscroll-behavior: contain;
+        max-height: none;
+        overflow: visible;
+        touch-action: auto;
+        overscroll-behavior: auto;
     }
 
     /* Command palette backdrop fix */
@@ -1642,5 +1720,43 @@ footer {
     .ai-twin-container {
         transform: none;
         will-change: auto;
+    }
+}
+
+@keyframes marquee-mobile {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .frame,
+    .marquee-content,
+    .status-dot,
+    .terminal-cursor,
+    h2::before {
+        animation: none !important;
+    }
+
+    .reveal-on-scroll,
+    .ascii-title,
+    .project-card,
+    .card-header,
+    .card-body,
+    nav a::before {
+        transition: none !important;
+    }
+
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
     }
 }

@@ -8,24 +8,48 @@
 // ═══════════════════════════════════════════════════════════════════════════
 const asciiTitle = document.getElementById('ascii-title');
 const glitchChars = "█▓▒░╔╗╚╝║═╠╣╦╩╬▀▄■□●○◘◙♦♣♠•";
+const glitchRegistry = new WeakMap();
+
+function registerGlitchElement(element) {
+    if (!element || glitchRegistry.has(element)) return;
+
+    glitchRegistry.set(element, {
+        originalHTML: element.innerHTML,
+        originalText: element.textContent,
+        intervalId: null,
+        isRunning: false
+    });
+}
 
 function createGlitchEffect(element) {
     if (!element) return;
 
-    const originalHTML = element.innerHTML;
-    const textContent = element.textContent;
+    registerGlitchElement(element);
+    const state = glitchRegistry.get(element);
+    if (!state) return;
+
+    if (state.intervalId) {
+        clearInterval(state.intervalId);
+        state.intervalId = null;
+    }
+
+    state.isRunning = true;
+    element.innerHTML = state.originalHTML;
+
     let iterations = 0;
 
-    const interval = setInterval(() => {
-        const glitchedText = textContent.split('').map((char, index) => {
+    state.intervalId = setInterval(() => {
+        const glitchedText = state.originalText.split('').map((char, index) => {
             if (char === '\n' || char === ' ') return char;
-            if (index < iterations) return textContent[index];
+            if (index < iterations) return state.originalText[index];
             return glitchChars[Math.floor(Math.random() * glitchChars.length)];
         }).join('');
 
-        if (iterations >= textContent.length) {
-            clearInterval(interval);
-            element.innerHTML = originalHTML;
+        if (iterations >= state.originalText.length) {
+            clearInterval(state.intervalId);
+            state.intervalId = null;
+            state.isRunning = false;
+            element.innerHTML = state.originalHTML;
             return;
         }
 
@@ -36,7 +60,9 @@ function createGlitchEffect(element) {
 
 // Trigger glitch on hover
 if (asciiTitle) {
+    registerGlitchElement(asciiTitle);
     asciiTitle.addEventListener('mouseenter', () => createGlitchEffect(asciiTitle));
+    asciiTitle.addEventListener('click', () => createGlitchEffect(asciiTitle));
     // Initial glitch effect on page load
     setTimeout(() => createGlitchEffect(asciiTitle), 800);
 }
@@ -381,7 +407,10 @@ if (chatForm) {
 // ═══════════════════════════════════════════════════════════════════════════
 const marqueeContent = document.querySelector('.marquee-content');
 if (marqueeContent) {
-    marqueeContent.innerHTML = marqueeContent.innerHTML + ' // ' + marqueeContent.innerHTML;
+    if (!marqueeContent.dataset.duplicated) {
+        marqueeContent.innerHTML = marqueeContent.innerHTML + ' // ' + marqueeContent.innerHTML;
+        marqueeContent.dataset.duplicated = 'true';
+    }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -396,7 +425,6 @@ let cmdActiveIndex = 0;
 const cmdActions = {
     projects: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }),
     stores: () => document.getElementById('stores')?.scrollIntoView({ behavior: 'smooth' }),
-    links: () => document.getElementById('links')?.scrollIntoView({ behavior: 'smooth' }),
     github: () => window.open('https://github.com/aryanxpatel', '_blank'),
     email: () => window.location.href = 'mailto:offaryanpatel@gmail.com',
     crt: () => toggleCRT(),
@@ -574,9 +602,6 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key === '2') {
         document.getElementById('stores')?.scrollIntoView({ behavior: 'smooth' });
         showNotification('→ Shopify Stores');
-    } else if (e.key === '3') {
-        document.getElementById('links')?.scrollIntoView({ behavior: 'smooth' });
-        showNotification('→ Links');
     }
 
     // Vim-style navigation
